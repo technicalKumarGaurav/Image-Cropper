@@ -28,7 +28,8 @@
 <body>
     <div class="container">
         <h1 class="text-center">PDF Compressor</h1>
-        <form>
+        <form action="{{route('pdf.compressor')}}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="form-group">
                 <label for="file">Select a PDF file:</label>
                 <input type="file" id="file" name="file" accept=".pdf">
@@ -56,17 +57,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('form').submit(function(event) {
-                event.preventDefault();
-                var file = $('#file')[0].files[0];
-                var compressionLevel = $('#compression-level').val();
-                // Call your PDF compression API or function here
-                // For demonstration purposes, we'll just simulate a successful compression
-                setTimeout(function() {
-                    $('#success-alert').show();
-                    $('#download-link').attr('href', 'path/to/compressed/pdf');
-                }, 2000);
-            });
+            // $('form').submit(function(event) {
+            //     event.preventDefault();
+            //     var file = $('#file')[0].files[0];
+            //     var compressionLevel = $('#compression-level').val();
+            //     // Call your PDF compression API or function here
+            //     // For demonstration purposes, we'll just simulate a successful compression
+            //     setTimeout(function() {
+            //         $('#success-alert').show();
+            //         $('#download-link').attr('href', 'path/to/compressed/pdf');
+            //     }, 2000);
+            // });
         });
     </script>
 </body>
