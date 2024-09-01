@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PdfCompress;
+use App\Models\ImageCropper;
 use Illuminate\Http\Request;
 
-class PdfCompressController extends Controller
+class ImageCorpperController extends Controller
 {
     /**
      * Display a listing of the resource.

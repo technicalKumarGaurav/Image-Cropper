@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PdfCompressController;
+use App\Http\Controllers\ImageCorpperController;
 
 // Route for the home page (view)
 Route::get('/', function () {
@@ -9,4 +9,4 @@ Route::get('/', function () {
 });
 
 // Route to handle image upload
-Route::post('upload-image', [PdfCompressController::class, 'uploadImage'])->name('upload.image');
+Route::post('upload-image', [ImageCorpperController::class, 'uploadImage'])->name('upload.image');
