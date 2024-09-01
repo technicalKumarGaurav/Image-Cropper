@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PdfCompressController;
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-//
+
+// Route for the home page (view)
 Route::get('/', function () {
     return view('index');
 });
-Route::post('pdf-compressor', [PdfCompressController::class,'index'])->name('pdf.compressor');
+
+// Route to handle image upload
+Route::post('upload-image', [PdfCompressController::class, 'uploadImage'])->name('upload.image');
