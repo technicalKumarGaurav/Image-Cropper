@@ -10,57 +10,20 @@ class PdfCompressController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function uploadImage(Request $request)
     {
-        return $request;
-        
-    }
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->extension();
+            $image->move(public_path('images'), $imageName);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+            return response()->json(['success' => 'Image uploaded successfully.', 'image_name' => $imageName]);
+        }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(PdfCompress $pdfCompress)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(PdfCompress $pdfCompress)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, PdfCompress $pdfCompress)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(PdfCompress $pdfCompress)
-    {
-        //
+        return response()->json(['error' => 'Image upload failed.']);
     }
 }
